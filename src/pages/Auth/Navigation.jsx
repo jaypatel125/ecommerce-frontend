@@ -22,7 +22,7 @@ const Navigation = () => {
   const [showSidebar, setShowSidebar] = useState(false);
 
   const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
+    setDropdownOpen((v) => !v);
   };
 
   const toggleSidebar = () => {
@@ -94,7 +94,7 @@ const Navigation = () => {
       <div className="relative">
         <button
           onClick={toggleDropdown}
-          className="flex items-center text-gray-8000 focus: outline-none "
+          className="flex items-center text-gray-800 focus:outline-none"
         >
           {userInfo ? (
             <span className="text-white ">{userInfo.username}</span>
@@ -120,9 +120,9 @@ const Navigation = () => {
             </svg>
           )}
         </button>
-        {dropdownOpen && userInfo && (
+        {userInfo && dropdownOpen && (
           <ul
-            className={`absolute right-0 mt-2 mr-55 space-y-2 bg-white text-gray-600 ${
+            className={`absolute right-0 mt-2 mr-55 space-y-2 bg-gray-800 text-white ${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
             } `}
           >
@@ -131,7 +131,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/dashboard"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block px-4 py-2 hover:bg-gray-500"
                   >
                     Dashboard
                   </Link>
@@ -139,7 +139,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/productlist"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block px-4 py-2 hover:bg-gray-500"
                   >
                     Products
                   </Link>
@@ -147,7 +147,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/categorylist"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block px-4 py-2 hover:bg-gray-500"
                   >
                     Category
                   </Link>
@@ -155,7 +155,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/orderlist"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block px-4 py-2 hover:bg-gray-500"
                   >
                     Orders
                   </Link>
@@ -163,7 +163,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/userlist"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block px-4 py-2 hover:bg-gray-500"
                   >
                     Users
                   </Link>
@@ -172,14 +172,14 @@ const Navigation = () => {
             )}
 
             <li>
-              <Link to="/profile" className="block px-4 py-2 hover:bg-gray-100">
+              <Link to="/profile" className="block px-4 py-2 hover:bg-gray-500">
                 Profile
               </Link>
             </li>
             <li>
               <button
                 onClick={logoutHandler}
-                className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                className="block w-full px-4 py-2 text-left hover:bg-gray-500"
               >
                 Logout
               </button>

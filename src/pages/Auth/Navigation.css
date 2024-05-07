@@ -1,7 +1,7 @@
 #navigation-container {
   width: 6%;
   transition: width 0.3s ease-in-out;
-  overflow: hidden; /* Hide overflowing content during transition */
+  overflow: hidden;
 }
 
 #navigation-container:hover {
