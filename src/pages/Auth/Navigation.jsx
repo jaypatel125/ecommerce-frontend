@@ -23,14 +23,11 @@ const Navigation = () => {
 
   const toggleDropdown = () => {
     setDropdownOpen((v) => !v);
+    console.log(dropdownOpen);
   };
 
   const toggleSidebar = () => {
-    setShowSidebar(!showSidebar);
-  };
-
-  const closeSidebar = () => {
-    setShowSidebar(false);
+    setShowSidebar((prev) => !prev);
   };
 
   const dispatch = useDispatch();
@@ -56,6 +53,8 @@ const Navigation = () => {
         showSidebar ? "hidden" : "flex"
       } xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-5 text-white bg-black w-[5%] hover:w-[15%] h-[100vh] fixed`}
       id="navigation-container"
+      onMouseEnter={toggleSidebar}
+      onMouseLeave={toggleSidebar}
     >
       <div className="flex flex-col justify-center space-y-4">
         <Link
@@ -120,7 +119,7 @@ const Navigation = () => {
             </svg>
           )}
         </button>
-        {userInfo && dropdownOpen && (
+        {userInfo && dropdownOpen && showSidebar && (
           <ul
             className={`absolute right-0 mt-2 mr-55 space-y-2 bg-gray-800 text-white ${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
