@@ -6,8 +6,19 @@ body {
   background: #0f0f10;
   color: #fff;
 }
-
 input,
 textarea {
-  color: #000;
+  color: #101010;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+/* Add more input types if needed */
+textarea,
+select {
+  background: transparent;
+  color: #fff;
 }

@@ -91,37 +91,36 @@ const Navigation = () => {
         </Link>
       </div>
       <div className="relative">
-        <button
-          onClick={toggleDropdown}
-          className="flex items-center text-gray-800 focus:outline-none"
-        >
+        <text className="flex items-center text-gray-800 focus:outline-none">
           {userInfo ? (
             <span className="text-white ">{userInfo.username}</span>
           ) : (
             <></>
           )}
           {userInfo && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className={`h-4 w-4 ml-1 ${
-                dropdownOpen ? "transform rotate-180" : ""
-              }`}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d={dropdownOpen ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"}
-              />
-            </svg>
+            <button onClick={toggleDropdown}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className={`h-4 w-4 ml-1 ${
+                  dropdownOpen ? "transform rotate-180" : ""
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="white"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d={dropdownOpen ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"}
+                />
+              </svg>
+            </button>
           )}
-        </button>
+        </text>
         {userInfo && dropdownOpen && showSidebar && (
           <ul
-            className={`absolute right-0 mt-2 mr-55 space-y-2 bg-gray-800 text-white ${
+            className={`absolute right-0 mb-5 mr-55 space-y-2 bg-gray-800 text-white ${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
             } `}
           >
