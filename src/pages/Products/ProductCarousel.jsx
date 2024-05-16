@@ -33,7 +33,7 @@ const ProductCarousel = () => {
       ) : (
         <Slider
           {...settings}
-          className="xl:w-[25rem] lg:w-[50rem] md:w-[56rem] sm:w-[40rem] sm:block"
+          className="xl:w-[45rem] lg:w-[50rem] md:w-[56rem] sm:w-[40rem] sm:block "
         >
           {products.map(
             ({
@@ -53,8 +53,49 @@ const ProductCarousel = () => {
                 <img
                   src={image}
                   alt={name}
-                  className="w-full rounded-lg object-cover h-[30rem]"
+                  className="w-full rounded-lg object-cover h-[30rem] mb-2"
                 />
+                <div className="flex justify-between w-[20rem]">
+                  <div className="one">
+                    <h2>{name}</h2>
+                    <p>${price}</p>
+                    <br />
+                    <br />
+                    <p className="w-[25rem]">
+                      {description.substring(0, 150)}...
+                    </p>
+                  </div>
+                  <div className="flex justify-between w-[20rem]">
+                    <div className="one">
+                      <h1 className="flex items-center mb-6 w-[10rem]">
+                        <FaStore className="mr-2 text-white" />
+                        <span>Brand: {brand}</span>
+                      </h1>
+                      <h1 className="flex items-center mb-6 w-[11rem]">
+                        <FaClock className="mr-2 text-white" /> Added:{" "}
+                        {moment(createdAt).fromNow()}
+                      </h1>
+                      <h1 className="flex items-center mb-6 w-[10rem]">
+                        <FaStar className="mr-2 text-white" />
+                        <span>Reviews: {numReviews}</span>
+                      </h1>
+                    </div>
+                    <div className="two">
+                      <h1 className="flex items-center mb-6 w-[10rem]">
+                        <FaStar className="mr-2 text-white" /> Ratings:{" "}
+                        {Math.round(rating)}
+                      </h1>
+                      <h1 className="flex items-center mb-6 w-[10rem]">
+                        <FaShoppingCart className="mr-2 text-white" /> Quantity:{" "}
+                        {quantity}
+                      </h1>
+                      <h1 className="flex items-center mb-6 w-[10rem]">
+                        <FaBox className="mr-2 text-white" /> In Stock:{" "}
+                        {countInStock}
+                      </h1>
+                    </div>
+                  </div>
+                </div>
               </div>
             )
           )}
