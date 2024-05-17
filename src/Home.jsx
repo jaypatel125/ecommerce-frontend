@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { useGetTopProductsQuery } from "./redux/api/productApiSlice.js";
+import { useGetProductsQuery } from "./redux/api/productApiSlice.js";
 import Loader from "./components/Loader";
 import Header from "./components/Header";
 import Message from "./components/Message";
@@ -7,7 +7,8 @@ import Product from "./pages/Products/Product";
 
 const Home = () => {
   const { keyword } = useParams();
-  const { data, isLoading, isError } = useGetTopProductsQuery({ keyword });
+  const { data, isLoading, isError } = useGetProductsQuery({ keyword });
+
   return (
     <>
       {!keyword ? <Header /> : null}
@@ -32,7 +33,7 @@ const Home = () => {
           </div>
           <div>
             <div className="ml-20 flex justify-center flex-wrap mt-[2rem]">
-              {data.map((product) => (
+              {data.products.map((product) => (
                 <div key={product._id} className="">
                   <Product product={product} />
                 </div>

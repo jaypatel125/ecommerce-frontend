@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../redux/api/usersApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
 import axios from "axios";
+import FavoriteCount from "../Products/FavoriteCount";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -23,7 +24,6 @@ const Navigation = () => {
 
   const toggleDropdown = () => {
     setDropdownOpen((v) => !v);
-    console.log(dropdownOpen);
   };
 
   const toggleSidebar = () => {
@@ -88,6 +88,7 @@ const Navigation = () => {
           <FaHeart className="mr-2 mt-[3rem]" size={26} />
           <span className="hidden nav-item-name mt-[3rem]">Favorite</span>
           {""}
+          <FavoriteCount />
         </Link>
       </div>
       <div className="relative">

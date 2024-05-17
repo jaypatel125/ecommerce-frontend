@@ -15,16 +15,16 @@ const AdminProductUpdate = () => {
 
   const { data: productData } = useGetProductByIdQuery(params._id);
 
-  const [image, setImage] = useState(productData?.image || "");
-  const [name, setName] = useState(productData?.name || "");
-  const [description, setDescription] = useState(
-    productData?.description || ""
-  );
-  const [price, setPrice] = useState(productData?.price || "");
-  const [category, setCategory] = useState(productData?.category);
-  const [quantity, setQuantity] = useState(productData?.quantity || "");
-  const [brand, setBrand] = useState(productData?.brand || "");
-  const [stock, setStock] = useState(productData?.countInStock || 1);
+  const [image, setImage] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [brand, setBrand] = useState("");
+  const [stock, setStock] = useState("");
+
+  console.log(productData);
 
   // hook
   const navigate = useNavigate();
@@ -33,11 +33,7 @@ const AdminProductUpdate = () => {
   const { data: categories = [] } = useFetchCategoriesQuery();
 
   const [uploadProductImage] = useUploadProductImageMutation();
-
-  // Define the update product mutation
   const [updateProduct] = useUpdateProductMutation();
-
-  // Define the delete product mutation
   const [deleteProduct] = useDeleteProductMutation();
 
   useEffect(() => {
@@ -51,6 +47,19 @@ const AdminProductUpdate = () => {
       setImage(productData.image);
     }
   }, [productData]);
+
+  useEffect(() => {
+    if (productData) {
+      setImage(productData.image || "");
+      setName(productData.name || "");
+      setDescription(productData.description || "");
+      setPrice(productData.price || "");
+      setCategory(productData.category || "");
+      setQuantity(productData.quantity || "");
+      setBrand(productData.brand || "");
+      setStock(productData.countInStock || "");
+    }
+  }, []);
 
   const uploadFileHandler = async (e) => {
     const formData = new FormData();
@@ -205,16 +214,16 @@ const AdminProductUpdate = () => {
                 <div>
                   <label htmlFor="">Category</label> <br />
                   <select
+                    value={category}
                     placeholder="Choose Category"
                     className="p-4 mb-3 w-[30rem] border rounded-lg bg-[#101011] text-white mr-[5rem]"
                     onChange={(e) => setCategory(e.target.value)}
                   >
-                    {categories?.map((c) => (
-                      <option
-                        key={c._id}
-                        value={c._id}
-                        selected={c._id === category}
-                      >
+                    <option value="" disabled>
+                      Select Category
+                    </option>
+                    {categories.map((c) => (
+                      <option key={c._id} value={c._id}>
                         {c.name}
                       </option>
                     ))}
