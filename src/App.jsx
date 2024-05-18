@@ -8,7 +8,19 @@ import "./index.css";
 function App() {
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition:Slide
+      />
       <Navigation />
       <main className="py-3">
         <Outlet />

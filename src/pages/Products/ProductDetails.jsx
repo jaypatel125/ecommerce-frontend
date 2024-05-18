@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
@@ -19,10 +19,12 @@ import moment from "moment";
 import HeartIcon from "./HeartIcon";
 import Ratings from "./Ratings";
 import ProductTabs from "./ProductTabs";
+import { addToCart } from "../../redux/features/cart/cartSlice";
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
@@ -36,8 +38,6 @@ const ProductDetails = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
-  console.log(userInfo);
-
   const [createReview, { isLoading: reviewLoading }] =
     useCreateReviewMutation();
 
@@ -49,11 +49,16 @@ const ProductDetails = () => {
         rating,
         comment,
       }).unwrap();
-      refetch();
+      window.location.reload();
       toast.success("Review created successfully");
     } catch (error) {
       toast.error(error.data.message || error.message);
     }
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addToCart({ ...product, qty }));
+    navigate("/cart");
   };
 
   return (
@@ -77,12 +82,14 @@ const ProductDetails = () => {
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-[30rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] sm:w-[20rem] mr-[2rem]"
+                className="w-[30rem] xl:w-[25rem] lg:w-[20rem] md:w-[15rem] sm:w-[20rem] mr-[2rem] rounded"
               />
-              <HeartIcon product={product} />
             </div>
             <div className="flex flex-col justify-between">
-              <h2 className="text-2xl font-semibold">{product.name}</h2>
+              <h2 className="text-2xl font-semibold relative">
+                {product.name} <HeartIcon product={product} />
+              </h2>
+
               <p className="my-4 xl:[35rem] lg:w-[35rem] md:w-[25rem] sm:w-[20rem] text-[#B0B0B0]">
                 {product.description}
               </p>
@@ -143,16 +150,17 @@ const ProductDetails = () => {
               </div>
               <div className="btn-container">
                 <button
-                  //   onClick={addToCartHandler}
+                  onClick={addToCartHandler}
                   disabled={product.countInStock === 0}
-                  className="bg-pink-600 text-white py-2 px-2 rounded-lg mt-4 md:mt-0"
+                  className="w-full bg-pink-600 text-white py-2 px-2 rounded-lg mt-4 md:mt-0
+                      hover:bg-pink-700 transition-colors duration-300 ease-in-out"
                 >
                   Add To Cart
                 </button>
               </div>
             </div>
 
-            <div className="mt-[5rem] container-flex flex-wrap items-start justify-between ml-[10rem]">
+            <div className="mt-[5rem] w-full">
               <ProductTabs
                 loadingProductReview={reviewLoading}
                 userInfo={userInfo}

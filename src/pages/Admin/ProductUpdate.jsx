@@ -117,10 +117,10 @@ const AdminProductUpdate = () => {
 
   return (
     <>
-      <div className="container  xl:mx-[9rem] sm:mx-[0]">
+      <div className="container xl:mx-[10%] sm:mx-[0]">
         <div className="flex flex-col md:flex-row">
           <AdminMenu />
-          <div className="md:w-3/4 p-3">
+          <div className="p-3">
             <h1 className="text-xl font-semibold h-12">Update Product</h1>
             {image && (
               <div className="text-center">
@@ -195,12 +195,12 @@ const AdminProductUpdate = () => {
               </label>
               <textarea
                 type="text"
-                className="p-2 mb-3 bg-[#101011]  border rounded-lg w-[95%] text-white"
+                className="p-2 mb-3 bg-[#101011]  border rounded-lg w-[100%] text-white"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
 
-              <div className="flex justify-between">
+              <div className="flex flex-wrap space-x-[8%]">
                 <div>
                   <label htmlFor="name block">Count In Stock</label> <br />
                   <input
@@ -210,13 +210,12 @@ const AdminProductUpdate = () => {
                     onChange={(e) => setStock(e.target.value)}
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="">Category</label> <br />
+                  <label htmlFor="name block">Category</label> <br />
                   <select
                     value={category}
                     placeholder="Choose Category"
-                    className="p-4 mb-3 w-[30rem] border rounded-lg bg-[#101011] text-white mr-[5rem]"
+                    className="name block p-4 mb-3 border rounded-lg bg-[#101011] text-white w-[275%]"
                     onChange={(e) => setCategory(e.target.value)}
                   >
                     <option value="" disabled>
@@ -230,6 +229,8 @@ const AdminProductUpdate = () => {
                   </select>
                 </div>
               </div>
+
+              <div className="flex flex-wrap"></div>
 
               <div className="">
                 <button

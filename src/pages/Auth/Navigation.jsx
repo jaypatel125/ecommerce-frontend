@@ -18,6 +18,7 @@ import FavoriteCount from "../Products/FavoriteCount";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
@@ -29,6 +30,10 @@ const Navigation = () => {
   const toggleSidebar = () => {
     setShowSidebar((prev) => !prev);
   };
+
+  if (!showSidebar) {
+    dropdownOpen && setDropdownOpen(false);
+  }
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,7 +56,7 @@ const Navigation = () => {
       style={{ zIndex: 999 }}
       className={`${
         showSidebar ? "hidden" : "flex"
-      } xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-5 text-white bg-black w-[5%] hover:w-[15%] h-[100vh] fixed`}
+      } xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-5 text-white bg-black w-[7%] hover:w-[15%] h-[100vh] fixed`}
       id="navigation-container"
       onMouseEnter={toggleSidebar}
       onMouseLeave={toggleSidebar}
@@ -80,6 +85,15 @@ const Navigation = () => {
           <AiOutlineShoppingCart className="mr-2 mt-[3rem]" size={26} />
           <span className="hidden nav-item-name mt-[3rem]">Cart</span>
           {""}
+          {cartItems.length > 0 && (
+            <span className="absolute left-6 top-8">
+              {cartItems.length > 0 && (
+                <span className="px-1 py-0 text-sm text-white bg-pink-500 rounded-full">
+                  {cartItems.length}
+                </span>
+              )}
+            </span>
+          )}
         </Link>
         <Link
           to="/favorite"
@@ -92,7 +106,7 @@ const Navigation = () => {
         </Link>
       </div>
       <div className="relative">
-        <text className="flex items-center text-gray-800 focus:outline-none">
+        <div className="flex items-center text-gray-800 focus:outline-none">
           {userInfo ? (
             <span className="text-white ">{userInfo.username}</span>
           ) : (
@@ -118,7 +132,8 @@ const Navigation = () => {
               </svg>
             </button>
           )}
-        </text>
+        </div>
+
         {userInfo && dropdownOpen && showSidebar && (
           <ul
             className={`absolute right-0 mb-5 mr-55 space-y-2 bg-gray-800 text-white ${

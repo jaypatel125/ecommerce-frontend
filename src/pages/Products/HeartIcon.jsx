@@ -10,6 +10,7 @@ import {
   removeFavoriteFromLocalStorage,
   getFavoritesFromLocalStorage,
 } from "../../Utils/localStorage";
+import { toast } from "react-toastify";
 
 import { useEffect, useState } from "react";
 
@@ -27,13 +28,15 @@ const HeartIcon = ({ product }) => {
     if (isFavorite) {
       dispatch(removeFromFavorite(product._id));
       removeFavoriteFromLocalStorage(product._id);
+      toast.success("Removed from favorites");
     } else {
+      toast.success("Added to favorites");
       dispatch(addFavorite(product));
       addFavoriteToLocalStorage(product);
     }
   };
   return (
-    <div className="absolute top-2 right-5 cursor-pointer">
+    <div className="absolute top-3 right-3 cursor-pointer">
       {isFavorite ? (
         <FaHeart className="text-pink-500" onClick={toggleFavorites} />
       ) : (

@@ -15,7 +15,7 @@ const AllProducts = () => {
   }
   return (
     <>
-      <div className="container mx-[10rem]">
+      <div className="container mx-[10%]">
         <div className="flex flex-col  md:flex-row">
           <div className="p-3">
             <div className="ml-[2rem] text-xl font-bold h-12">
@@ -32,7 +32,7 @@ const AllProducts = () => {
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-[10rem] object-cover"
+                      className="w-[10rem] h-[10rem] object-cover rounded"
                     />
                     <div className="p-4 flex flex-col justify-around">
                       <div className="flex justify-between">
