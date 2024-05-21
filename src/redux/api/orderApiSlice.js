@@ -12,16 +12,16 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     }),
 
     getOrderDetails: builder.query({
-      query: (orderId) => ({
-        url: `${ORDERS_URL}/${orderId}`,
+      query: (id) => ({
+        url: `${ORDERS_URL}/${id}`,
       }),
     }),
 
     payOrder: builder.mutation({
-      query: (orderId, paymentResult) => ({
+      query: ({ orderId, details }) => ({
         url: `${ORDERS_URL}/${orderId}/pay`,
         method: "PUT",
-        body: paymentResult,
+        body: details,
       }),
     }),
 
@@ -40,7 +40,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
 
     getOrders: builder.query({
       query: () => ({
-        url: `${ORDERS_URL}`,
+        url: ORDERS_URL,
       }),
     }),
 
@@ -52,36 +52,29 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     }),
 
     getTotalOrders: builder.query({
-      query: () => ({
-        url: `${ORDERS_URL}/total-orders`,
-      }),
+      query: () => `${ORDERS_URL}/total-orders`,
     }),
 
     getTotalSales: builder.query({
-      query: () => ({
-        url: `${ORDERS_URL}/total-sales`,
-      }),
+      query: () => `${ORDERS_URL}/total-sales`,
     }),
 
     getTotalSalesByDate: builder.query({
-      query: () => ({
-        url: `${ORDERS_URL}/total-sales-by-date`,
-      }),
+      query: () => `${ORDERS_URL}/total-sales-by-date`,
     }),
   }),
 });
 
 export const {
+  useGetTotalOrdersQuery,
+  useGetTotalSalesQuery,
+  useGetTotalSalesByDateQuery,
+  // ------------------
   useCreateOrderMutation,
   useGetOrderDetailsQuery,
   usePayOrderMutation,
   useGetPaypalClientIdQuery,
   useGetMyOrdersQuery,
   useDeliverOrderMutation,
-  useGetTotalOrdersQuery,
-  useGetTotalSalesQuery,
-  useGetTotalSalesByDateQuery,
   useGetOrdersQuery,
 } = orderApiSlice;
-
-export const { reducer } = orderApiSlice;
