@@ -7,8 +7,8 @@ const Favorites = () => {
   console.log(favorites);
 
   return (
-    <div className="ml-[6rem] w-full">
-      <h1 className="text-lg font-bold ml-[3rem] mt-[3rem]">Favorites</h1>
+    <div className="xl:ml-[10%] md:ml-[0rem] mt-[2rem]">
+      <h1 className="text-2xl font-semibold ml-[4%]">Favorites</h1>
       <div className="flex flex-wrap">
         {favorites.map((favorite) => (
           <Product key={favorite._id} product={favorite} />

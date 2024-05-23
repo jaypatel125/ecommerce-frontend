@@ -52,11 +52,11 @@ const PlaceOrder = () => {
             <table className="w-full border-collapse">
               <thead>
                 <tr>
-                  <td className="px-1 py-2 text-left align-top">Image</td>
-                  <td className="px-1 py-2 text-left">Product</td>
-                  <td className="px-1 py-2 text-left">Quantity</td>
-                  <td className="px-1 py-2 text-left">Price</td>
-                  <td className="px-1 py-2 text-left">Total</td>
+                  <td className="px-1 py-2 font-semibold align-top">Image</td>
+                  <td className="px-1 py-2 font-semibold">Product</td>
+                  <td className="px-1 py-2 font-semibold">Quantity</td>
+                  <td className="px-1 py-2 font-semibold">Price</td>
+                  <td className="px-1 py-2 font-semibold">Total</td>
                 </tr>
               </thead>
               <tbody>

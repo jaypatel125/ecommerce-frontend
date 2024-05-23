@@ -63,11 +63,11 @@ const ProductList = () => {
   };
 
   return (
-    <div className="container xl:mx-[9rem] sm:mx-[0]">
+    <div className="container xl:mx-[9rem] sm:mx-[0] mt-[3rem]">
       <div className="flex flex-col md:flex-row">
         <AdminMenu />
         <div classame="md:w-3/4 p-3">
-          <div className="h-12 font-extrabold">Create Product</div>
+          <h2 className="text-2xl h-12 font-semibold">Create Product</h2>
 
           {imageUrl && (
             <div className="text-center">

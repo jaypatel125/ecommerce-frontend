@@ -104,7 +104,7 @@ const Order = () => {
   ) : error ? (
     <Message variant="danger">{error}</Message>
   ) : (
-    <div className="container flex flex-col justify-center md:flex-row">
+    <div className="container flex flex-col justify-center md:flex-row mt-[3rem]">
       <div className="border-gray-300 mt-5 pb-4 mb-5">
         {order.orderItems === 0 ? (
           <Message>Order is empty</Message>

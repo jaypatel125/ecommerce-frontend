@@ -15,12 +15,10 @@ const AllProducts = () => {
   }
   return (
     <>
-      <div className="container mx-[10%]">
+      <div className="container ml-[10%] mt-[3rem]">
         <div className="flex flex-col  md:flex-row">
           <div className="p-3">
-            <div className="ml-[2rem] text-xl font-bold h-12">
-              All Products ({products.products.length})
-            </div>
+            <h2 className="text-2xl h-12 font-semibold">All Products</h2>
             <div className="flex flex-wrap justify-around items-center ">
               {products.products.map((product) => (
                 <Link

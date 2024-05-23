@@ -57,8 +57,8 @@ const UserList = () => {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-semibold mb-4 ml-20 pl-10">Users</h1>
+    <div className="p-4 mt-[3rem] ml-[10%]">
+      <h2 className="text-2xl h-12 font-semibold">Manage Users</h2>
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -68,7 +68,7 @@ const UserList = () => {
       ) : (
         <div className="flex flex-col md:flex-row">
           <AdminMenu />
-          <table className="w-full md:w-4/5 mx-auto">
+          <table className="w-full md:w-[90%]">
             <thead>
               <tr>
                 <th className="px-4 py-2 text-left"></th>

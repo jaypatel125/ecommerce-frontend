@@ -121,7 +121,7 @@ const AdminProductUpdate = () => {
         <div className="flex flex-col md:flex-row">
           <AdminMenu />
           <div className="p-3">
-            <h1 className="text-xl font-semibold h-12">Update Product</h1>
+            <h2 className="text-2xl font-semibold h-12">Update Product</h2>
             {image && (
               <div className="text-center">
                 <img
