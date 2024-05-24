@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api/": "http://localhost:5001",
-      "/uploads/": "http://localhost:5001",
+      "/api/": "https://ecommerce-backend-m74h.onrender.com",
+      "/uploads/": "https://ecommerce-backend-m74h.onrender.com",
     },
   },
 });

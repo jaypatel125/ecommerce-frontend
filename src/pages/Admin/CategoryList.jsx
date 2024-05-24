@@ -69,7 +69,7 @@ const CategoryList = () => {
       } else {
         setModalVisible(false);
         toast.success(`${result.name} is successfully deleted`);
-        selectedCategory = null;
+        setSelectedCategory(null);
       }
     } catch (err) {
       toast.error(err?.data?.message || err.error);
